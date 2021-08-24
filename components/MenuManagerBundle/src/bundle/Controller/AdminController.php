@@ -152,7 +152,7 @@ class AdminController extends Controller
             $this->configResolver->getParameter('content.tree_root.location_id')
         );
 
-        return $this->editAction($request, $menu);
+        return $this->editAction($request, $menu, $this->generateUrl('menu_manager.menu_list'));
     }
 
     /**
@@ -160,9 +160,9 @@ class AdminController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Menu $menu)
+    public function editAction(Request $request, Menu $menu, ?string $lastAccessedUrl = null)
     {
-        $lastAccessedUrl = $this->lastAccessedUrl($request);
+        $lastAccessedUrl = $lastAccessedUrl ?? $this->lastAccessedUrl($request);
 
         $form = $this->createForm(MenuType::class, $menu);
         $form->handleRequest($request);

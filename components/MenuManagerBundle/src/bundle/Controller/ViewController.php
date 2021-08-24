@@ -32,7 +32,7 @@ class ViewController extends Controller
     public function viewMenuAction(Menu $menu, MenuBuilder $menuBuilder)
     {
         return $this->render(
-            '@EzMenuManager/themes/standard/menu_manager/view.html.twig',
+            '@ezdesign/menu_manager/view.html.twig',
             [
                 'knpMenu' => $menuBuilder->build($menu),
                 'title' => $menu->getName(),
