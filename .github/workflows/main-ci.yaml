@@ -24,7 +24,7 @@ jobs:
             -   name: Check Mess Sources
                 run: php vendor/bin/phpmd src,components,bin text .cs/md_ruleset.xml
     ibexa:
-        name: Ibexa OSS
+        name: Ibexa OSS 3
         runs-on: ubuntu-latest
         services:
             mysql:
@@ -99,7 +99,7 @@ jobs:
 
             -   name: Install Ibexa DXP and Yarn deps
                 run: |
-                    composer create-project ibexa/oss-skeleton --prefer-dist --no-progress --no-interaction ezplatform
+                    composer create-project "ibexa/oss-skeleton:3.*" --prefer-dist --no-progress --no-interaction ezplatform
                     mkdir -p ezplatform/node_modules && ln -s ezplatform/node_modules
                     cd ezplatform
                     php bin/console ibexa:install
